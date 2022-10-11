@@ -107,7 +107,7 @@ const Header: React.FC = () => {
   },
  ]
  return (
-  <div>
+  <div className="shadow-sm border-b bg-white sticky z-50">
    <div className="flex justify-between align-middle max-w-6xl lg:mx-auto">
     {/* left  */}
     <div className="cursor-pointer flex justify-center items-center">
@@ -142,8 +142,6 @@ const Header: React.FC = () => {
           {breed.name}
          </option>
         ))}
-       {/* <option value="value2">Value 2</option>
-       <option value="value3">Value 3</option> */}
       </select>
      </div>
     </div>
