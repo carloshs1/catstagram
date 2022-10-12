@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { HomeIcon } from '@heroicons/react/24/solid'
 import { breedsType } from '../utils/types'
 import { mockBreeds } from '../utils/mock'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 const Header: React.FC = () => {
+ const { data: session } = useSession()
  const [breeds, setBreeds] = useState<breedsType[]>([])
  useEffect(() => {
   const breeds = [...Array(20)].map((_, i) => ({
@@ -39,13 +41,19 @@ const Header: React.FC = () => {
     </div>
 
     {/* Right  */}
-    <div className="flex items-center justify-end space-x-4">
+    <div className="flex items-center justify-end space-x-4 mr-3">
      <HomeIcon className="h-6 cursor-pointer hover:scale-125 transition duration-150 ease-out" />
-     <img
-      className="h-10 rounded-full cursor-pointer"
-      src="https://cdn2.thecatapi.com/images/xnsqonbjW.jpg"
-      alt="Profile Image"
-     />
+
+     {session ? (
+      <img
+       onClick={() => signOut()}
+       className="h-10 w-10 rounded-full cursor-pointer hover:scale-105 transition duration-100 ease-out"
+       src={session?.user?.image || ''}
+       alt="Profile Image"
+      />
+     ) : (
+      <button onClick={() => signIn()}>Sign In</button>
+     )}
     </div>
    </div>
   </div>
