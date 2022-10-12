@@ -1,11 +1,5 @@
 import React from 'react'
-import {
- MagnifyingGlassIcon,
- PlusCircleIcon,
- UserGroupIcon,
- HeartIcon,
- PaperAirplaneIcon,
-} from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 const Header: React.FC = () => {
  const breeds = [
@@ -107,7 +101,7 @@ const Header: React.FC = () => {
   },
  ]
  return (
-  <div className="shadow-sm border-b bg-white sticky z-50">
+  <div className="shadow-sm border-b bg-white sticky top-0 z-50">
    <div className="flex justify-between align-middle max-w-6xl lg:mx-auto">
     {/* left  */}
     <div className="cursor-pointer flex justify-center items-center">

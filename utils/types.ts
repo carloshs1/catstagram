@@ -3,14 +3,12 @@ type weightType = {
  metric: string
 }
 
-type imageType = {
- id: string
- width: number
- height: number
- url: string
+type categoriesType = {
+ id: number
+ name: string
 }
 
-export type breedsType = {
+type breedType = {
  weight: weightType
  id: string
  name: string
@@ -48,5 +46,17 @@ export type breedsType = {
  wikipedia_url: string
  hypoallergenic: number
  reference_image_id: string
+}
+
+export type imageType = {
+ categories?: categoriesType[]
+ breeds?: breedType[]
+ id: string
+ width: number
+ height: number
+ url: string
+}
+
+export type breedsType = breedType & {
  image: imageType
 }
