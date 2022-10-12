@@ -134,8 +134,9 @@ const Header: React.FC = () => {
       <select
        className="bg-gray-50 block w-full text-sm border-gray-300 focus:ring-black focus:border-black hover:border-gray-500 rounded-md"
        name="select"
+       defaultValue=""
       >
-       <option selected>Select Breed</option>
+       <option>Select Breed</option>
        {breeds &&
         breeds.map((breed) => (
          <option value={breed.name} key={breed.id}>
