@@ -3,9 +3,11 @@ import { HomeIcon } from '@heroicons/react/24/solid'
 import { breedsType } from '../utils/types'
 import { mockBreeds } from '../utils/mock'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const Header: React.FC = () => {
  const { data: session } = useSession()
+ const router = useRouter()
  const [breeds, setBreeds] = useState<breedsType[]>([])
  useEffect(() => {
   const breeds = [...Array(20)].map((_, i) => ({
@@ -14,11 +16,11 @@ const Header: React.FC = () => {
   setBreeds(breeds)
  }, [])
  return (
-  <div className="shadow-sm border-b bg-white sticky top-0 z-50">
+  <div className="shadow-sm border-b bg-white sticky top-0 z-50 px-1 sm:px-3">
    <div className="flex justify-between align-middle max-w-6xl lg:mx-auto">
     {/* left  */}
     <div className="cursor-pointer flex justify-center items-center">
-     <h1 className="ml-3">Catstagram</h1>
+     <h1 onClick={() => router.push('/')}>Catstagram</h1>
     </div>
 
     {/* Middle  */}
@@ -41,8 +43,11 @@ const Header: React.FC = () => {
     </div>
 
     {/* Right  */}
-    <div className="flex items-center justify-end space-x-4 mr-3">
-     <HomeIcon className="h-6 cursor-pointer hover:scale-125 transition duration-150 ease-out" />
+    <div className="flex items-center justify-end space-x-4">
+     <HomeIcon
+      className="h-6 hidden sm:inline-grid cursor-pointer hover:scale-125 transition duration-150 ease-out"
+      onClick={() => router.push('/')}
+     />
 
      {session ? (
       <img

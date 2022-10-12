@@ -5,8 +5,8 @@ export const authOptions = {
  // Configure one or more authentication providers
  providers: [
   GoogleProvider({
-   clientId: process.env.GOOGLE_CLIENT_ID,
-   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+   clientId: process.env.GOOGLE_CLIENT_ID || '',
+   clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
   }),
   // ...add more providers here
  ],
@@ -14,12 +14,13 @@ export const authOptions = {
   signIn: '/auth/signin',
  },
  callbacks: {
-  async session({ session, token, user }) {
+  async session({ session, token }) {
    session.user.username = session.user.name
     .split(' ')
     .join('')
     .toLocaleLowerCase()
    session.user.uid = token.sub
+   return session
   },
  },
 }
