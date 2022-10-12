@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { HomeIcon } from '@heroicons/react/24/solid'
 import { breedsType } from '../utils/types'
 import { mockBreeds } from '../utils/mock'
 
@@ -20,20 +20,6 @@ const Header: React.FC = () => {
     </div>
 
     {/* Middle  */}
-    <div className="max-w-xs hidden sm:inline-block">
-     <div className="relative mt-1 p-3 rounded-md">
-      <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
-       <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
-      </div>
-      <input
-       className="bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-black focus:border-black hover:border-gray-500 rounded-md"
-       type="text"
-       placeholder="Search"
-      />
-     </div>
-    </div>
-
-    {/* Right  */}
     <div className="max-w-xs">
      <div className="mt-1 p-3 rounded-md">
       <select
@@ -50,6 +36,16 @@ const Header: React.FC = () => {
         ))}
       </select>
      </div>
+    </div>
+
+    {/* Right  */}
+    <div className="flex items-center justify-end space-x-4">
+     <HomeIcon className="h-6 cursor-pointer hover:scale-125 transition duration-150 ease-out" />
+     <img
+      className="h-10 rounded-full cursor-pointer"
+      src="https://cdn2.thecatapi.com/images/xnsqonbjW.jpg"
+      alt="Profile Image"
+     />
     </div>
    </div>
   </div>
