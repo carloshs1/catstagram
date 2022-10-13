@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { HomeIcon } from '@heroicons/react/24/solid'
-import { breedsType } from '../utils/types'
-import { mockBreeds } from '../utils/mock'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { useRecoilValue } from 'recoil'
+import { breedsState } from '../atoms/breedsAtom'
 
 const Header: React.FC = () => {
  const { data: session } = useSession()
  const router = useRouter()
- const [breeds, setBreeds] = useState<breedsType[]>([])
- useEffect(() => {
-  const breeds = [...Array(20)].map((_, i) => ({
-   ...mockBreeds[i],
-  }))
-  setBreeds(breeds)
- }, [])
+ const breeds = useRecoilValue(breedsState)
  return (
   <div className="shadow-sm border-b bg-white sticky top-0 z-50 px-1 sm:px-3">
    <div className="flex justify-between align-middle max-w-6xl lg:mx-auto">

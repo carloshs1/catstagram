@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useRecoilValue } from 'recoil'
+import { breedsState } from '../atoms/breedsAtom'
 import { shuffleBreeds } from '../utils/functions'
-import { mockBreeds } from '../utils/mock'
-import { breedsType } from '../utils/types'
 import Story from './Story'
 
 const Stories: React.FC = () => {
- const [breeds, setBreeds] = useState<breedsType[]>([])
- useEffect(() => {
-  const breeds = [...Array(20)].map((_, i) => ({
-   ...mockBreeds[i],
-  }))
-  setBreeds(breeds)
- }, [])
+ const breeds = useRecoilValue(breedsState)
  return (
   <div className="flex space-x-2 mx-2 p-6 bg-white mt-8 border-gray-200 border rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-black md:max-w-3xl">
-   {breeds &&
-    shuffleBreeds(breeds).map((breed) => (
-     <Story key={breed.id} breed={breed} />
-    ))}
+   {shuffleBreeds(breeds.slice(0)).map((breed) => (
+    <Story key={breed.id} breed={breed} />
+   ))}
   </div>
  )
 }
