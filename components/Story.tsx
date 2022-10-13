@@ -15,15 +15,15 @@ const Story: React.FC<{ breed: breedsType }> = ({ breed }) => {
  const setOpen = useSetRecoilState(modalState)
  const handleClick = async () => {
   if (session) {
-   const imageRef = await addDoc(collection(db, 'history'), {
+   await addDoc(collection(db, 'history'), {
     name: session?.user?.name,
     email: session?.user?.email,
     profileImg: session?.user?.image,
+    url,
     id,
     type: 'breed',
     timestamp: serverTimestamp(),
    })
-   console.warn({ imageRef })
   }
   setOpen({ id, type: 'breed' })
  }

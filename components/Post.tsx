@@ -15,15 +15,15 @@ const Post: React.FC<{ image: imageType; innerRef?: (node: any) => void }> = ({
  const setOpen = useSetRecoilState(modalState)
  const handleClick = async () => {
   if (session) {
-   const imageRef = await addDoc(collection(db, 'history'), {
+   await addDoc(collection(db, 'history'), {
     name: session?.user?.name,
     email: session?.user?.email,
     profileImg: session?.user?.image,
+    url,
     id: image.id,
     type: 'image',
     timestamp: serverTimestamp(),
    })
-   console.warn({ imageRef })
   }
   setOpen({ id: image.id, type: 'image' })
  }
