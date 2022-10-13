@@ -1,8 +1,12 @@
 import { atom } from 'recoil'
 
-export const modalState = atom({
+export const modalState = atom<{
+ id: string | null
+ type: 'breed' | 'image' | null
+}>({
  key: 'modalState',
  default: {
-  id: '',
+  id: null,
+  type: null,
  },
 })

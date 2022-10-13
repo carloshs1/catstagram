@@ -9,7 +9,7 @@ const Post: React.FC<{ image: imageType }> = ({ image }) => {
  return (
   <div
    className="cursor-pointer col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm"
-   onClick={() => setOpen(image)}
+   onClick={() => setOpen({ id: image.id, type: 'image' })}
   >
    <img
     className="object-cover w-full h-[400px]"
