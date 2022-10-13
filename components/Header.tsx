@@ -2,13 +2,21 @@ import React from 'react'
 import { HomeIcon } from '@heroicons/react/24/solid'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { breedsState } from '../atoms/breedsAtom'
+import { fetchImagesState } from '../atoms/fetchImagesAtom'
 
 const Header: React.FC = () => {
  const { data: session } = useSession()
  const router = useRouter()
  const breeds = useRecoilValue(breedsState)
+
+ const setFetchImagesParams = useSetRecoilState(fetchImagesState)
+
+ const handleChange = (e: any) => {
+  setFetchImagesParams({ pageNumber: 0, query: e.target.value })
+ }
+
  return (
   <div className="shadow-sm border-b bg-white sticky top-0 z-50 px-1 sm:px-3">
    <div className="flex justify-between align-middle max-w-6xl lg:mx-auto">
@@ -24,11 +32,12 @@ const Header: React.FC = () => {
        className="bg-gray-50 block w-full text-sm border-gray-300 focus:ring-black focus:border-black hover:border-gray-500 rounded-md"
        name="select"
        defaultValue=""
+       onChange={handleChange}
       >
-       <option>Select Breed</option>
+       <option value="">Select Breed</option>
        {breeds &&
         breeds.map((breed) => (
-         <option value={breed.name} key={breed.id}>
+         <option value={breed.id} key={breed.id}>
           {breed.name}
          </option>
         ))}
