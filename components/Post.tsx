@@ -1,10 +1,16 @@
 import React from 'react'
+import { useRecoilState } from 'recoil'
+import { modalState } from '../atoms/modalAtom'
 import { imageType } from '../utils/types'
 
 const Post: React.FC<{ image: imageType }> = ({ image }) => {
  const { url } = image
+ const [open, setOpen] = useRecoilState(modalState)
  return (
-  <div className="cursor-pointer col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm">
+  <div
+   className="cursor-pointer col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm"
+   onClick={() => setOpen(image)}
+  >
    <img
     className="object-cover w-full h-[400px]"
     src={url}
