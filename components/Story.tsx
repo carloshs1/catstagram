@@ -4,8 +4,6 @@ import { modalState } from '../atoms/modalAtom'
 import { breedsType } from '../utils/types'
 
 const Story: React.FC<{ breed: breedsType }> = ({ breed }) => {
- // console.warn(breed)
- // if (!breed.image) return null
  const {
   name,
   image: { url, id },

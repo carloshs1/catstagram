@@ -17,7 +17,7 @@ export default function useSelectBreed(query, pageNumber) {
   axios({
    method: 'GET',
    url: 'https://api.thecatapi.com/v1/images/search',
-   params: { breed_id: query, page: pageNumber, limit: 20, order: 'asc' },
+   params: { breed_id: query, page: pageNumber, limit: 5, order: 'asc' },
    headers: {
     'Content-type': 'application/json',
     'x-api-key':
@@ -30,7 +30,7 @@ export default function useSelectBreed(query, pageNumber) {
     setImages((previousImages) => {
      return [...new Set([...previousImages, ...res.data])]
     })
-    setHasMore(Boolean(+count > 0))
+    setHasMore(Boolean(+count > images.length))
     setLoading(false)
    })
    .catch((e) => {

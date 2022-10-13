@@ -17,14 +17,13 @@ const Modal: React.FC = () => {
   const getCat = async () => {
    try {
     const { data } = await axios.get(`/api/modal/${id}/image`)
-    console.warn({ data })
     setModalInfo({
      url: data.url,
      title: type === 'breed' ? data.breeds[0].name : '',
      description: type === 'breed' ? data.breeds[0].description : '',
     })
    } catch (err) {
-    console.warn({ err })
+    console.warn(err)
    }
   }
   if (id) getCat()
