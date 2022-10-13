@@ -1,13 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useRecoilValue } from 'recoil'
-import { modalState } from '../atoms/modalAtom'
 import Feed from '../components/Feed'
 import Header from '../components/Header'
+import Modal from '../components/Modal'
 
 const Home: NextPage = () => {
- const modal = useRecoilValue(modalState)
- console.warn({ modal })
  return (
   <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
    <Head>
@@ -22,6 +19,7 @@ const Home: NextPage = () => {
    <Feed />
 
    {/* Modal */}
+   <Modal />
   </div>
  )
 }
