@@ -17,7 +17,7 @@ export default function useSelectBreed(query, pageNumber) {
   axios({
    method: 'GET',
    url: 'https://api.thecatapi.com/v1/images/search',
-   params: { breed_id: query, page: pageNumber, limit: 5, order: 'asc' },
+   params: { breed_id: query, page: pageNumber, limit: 12, order: 'asc' },
    headers: {
     'Content-type': 'application/json',
     'x-api-key':

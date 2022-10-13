@@ -48,12 +48,16 @@ const Posts: React.FC = () => {
       return <Post key={image.id} image={image} />
      }
     })}
-   <div className="text-center col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm">
-    {loading && 'Loading...'}
-   </div>
-   <div className="text-center col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm">
-    {error && 'Error'}
-   </div>
+   {loading && (
+    <div className="text-center col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm">
+     Loading...
+    </div>
+   )}
+   {error && (
+    <div className="text-center col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-sm">
+     An error has ocurred
+    </div>
+   )}
   </div>
  )
 }
