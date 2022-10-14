@@ -30,7 +30,7 @@ const Modal: React.FC = () => {
  }, [modalOpen])
 
  return (
-  <Transition.Root show={Boolean(id)} as={Fragment}>
+  <Transition.Root show={Boolean(url)} as={Fragment}>
    <Dialog
     as="div"
     className="fixed x-10 inset-0 overflow-y-auto"
@@ -81,8 +81,8 @@ const Modal: React.FC = () => {
        {title && <h1 className="text-center">{title}</h1>}
        <img
         className="object-cover w-full h-[400px] my-3"
-        src={url ? url : ''}
-        alt={title ? title : ''}
+        src={url || ''}
+        alt={title || ''}
        />
        {description ? (
         <p>{description}</p>
