@@ -60,7 +60,7 @@ const history = () => {
        (item) => <HistoryItem key={item.data().id} url={item.data().url} />
       )}
      {!items.length && (
-      <div className="col-span-1 bg-white my-7 mx-2 sm:mx-3 border rounded-lg overflow-hidden">
+      <div className="col-span-1 py-3 text-center bg-white my-7 mx-2 sm:mx-3 border rounded-lg overflow-hidden">
        No items yet
       </div>
      )}
